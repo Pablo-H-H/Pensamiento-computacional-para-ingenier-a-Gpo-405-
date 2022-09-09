@@ -17,16 +17,23 @@ def lertra_usada_comprobacion(letra_usuario, letras_usadas):
 
 def letra_si_esta (palabra_escogida, letra_usuario):
     if (letra_usuario in palabra_escogida):
-        print ("la letra esta en la palabra")
         return True
     
 def eliminar_letra  (palabra_escogida_destruible, letra_usuario):
     for x in range (len(palabra_escogida_destruible)):
-        palabra_escogible_destruible = palabra_escogida_destruible.replace(letra_usuario[x], "")
-    print (palabra_escogible_destruible)
+        palabra_escogida_destruible = palabra_escogida_destruible.replace(letra_usuario, "")
     return palabra_escogida_destruible
 #lista de los valores usados: numero_letras, palabra_adivinar, pista_n (n = al no. de la pregunta)
 #Escoge una palabra a lazar y comprueba cual era la palabra
+valido = False
+letra_valida = True
+adivinado = False
+pregunta_jugar = False
+letra_no_usada = True
+
+letras_usadas = []
+
+
 lista_palabras = ["perro", "pato","piano", "fruta", "flor"]
 palabra_escogida = random.choice(lista_palabras)
 if ("perro" == palabra_escogida):
@@ -49,14 +56,13 @@ print ("Tu Palabra Es: ", palabra_escogida)
 print ("Tu Palabra Tiene:", longitud_palabra, " letras", "_ " * longitud_palabra)
 print ("Tus Pistas Son: ", lista_pistas)
 #Esta parte se usa para que el usuario meta una letra, guarda la letra y comprueba si la letra ya esta en uso
-valido = False
-letra_valida = True
-adivinado = False
-letra_no_usada = True
-letras_usadas = []
+
 palabra_escogida_destruible = palabra_escogida
+
 while not adivinado:
+    print (adivinado)
     while not valido:
+        print (valido)
         letra_usuario = input("ingresa una letra profavor: ")
         letra_valida = validacion(letra_usuario)
         if letra_valida:
@@ -65,18 +71,23 @@ while not adivinado:
             if letra_no_usada:
                 print (letras_usadas)
                 print("Esa letra No Estaba Usada")
-                if (letra_si_esta (palabra_escogida, letra_usuario)):
-                    palabra_escogible_destruible = eliminar_letra  (palabra_escogida_destruible, letra_usuario)
+                if (letra_si_esta (palabra_escogida_destruible, letra_usuario)):
+                    print ("la letra estaba en la palabra")
+                    palabra_escogida_destruible = eliminar_letra (palabra_escogida_destruible, letra_usuario)
+                    print (palabra_escogida_destruible)
                     valido = False
+                else:
+                    print ("Esta letra no estaba en la palabra")
+                if (palabra_escogida_destruible == ""):
+                    adivinado = True
+                    print (adivinado)
+                    print ("Palabra Adivinada")
             else:
                 print ("letra usada")
                 valido = False
         else:
             valido = False
             print("Valor No Valido, Ingresa Una Letra A La Vez")
-            
-
-
 
 """Los imprime para comprobar si los datos son correctos,
 en la version final esto sera elimiado"""
