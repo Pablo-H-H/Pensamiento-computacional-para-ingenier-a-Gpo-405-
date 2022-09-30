@@ -14,5 +14,5 @@ adivinas la letra correcta: ""Letra incorrecta! _ _ _ _ Letras Intentadas Q Pist
 
 Finales del juego
 En el caso de que tengas bien todas las letras del ahorcado entonces te saldra un mensaje felicitandote por haber acertado corretamente(ejemplo: "La Palabra era PATO,
-Felicidades Granaste!!!!")
-En el caso de que tengas 3 errores entonces te saldra un mensaje diciendote la palabra correcta(ejemplo: "La Palabra era PATO, Màs suerte a la proxima")
+Felicidades Ganaste!!!!")
+En el caso de que tengas 3 errores entonces te saldra un mensaje diciendote la palabra correcta(ejemplo: "La Palabra era PATO, Mas suerte a la proxima")
