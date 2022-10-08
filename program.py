@@ -4,29 +4,15 @@ def palabra_lazar (lista_palabras):
     return (random.choice(lista_palabras))
 
 def asignar_palabra (palabra_escogida):
-    if ("perro" == palabra_escogida):
-        lista_pistas = ["Es algo que vive", "Es peludo", "Es una mascota", "Es el mejor amigo del hombre"]
-        longitud_palabra = len(palabra_escogida)
-
-
-    if ("pato" == palabra_escogida):
-        lista_pistas = ["Esta vivo", "Puede nadar y caminar", "Suele de ser color amarillo o blanco", "Tiene plumas"]
-        longitud_palabra = len(palabra_escogida)
-
-
-    if ("fruta" == palabra_escogida):
-        lista_pistas = ["Se suele vender", "Es dulce", "Lo puedes encontrar en el supermercado", "Viene de los arboles"]
-        longitud_palabra = len(palabra_escogida)
-
-
-    if ("piano" == palabra_escogida):
-        lista_pistas = ["Es de gran tamaño", "Normalmente es de madera", "Tiene cuerdas", "Es un instrumento"]
-        longitud_palabra = len(palabra_escogida)
-
-
-    if ("flor" == palabra_escogida):
-        lista_pistas = ["Esta viva", "La puedes encontrar en el suelo", "Es de colores", "Esta en las plantas"]
-        longitud_palabra = len(palabra_escogida)
+    dic = {"perro": ["Es algo que vive", "Es peludo", "Es una mascota", "Es el mejor amigo del hombre"],
+         "pato": ["Esta vivo", "Puede nadar y caminar", "Suele de ser color amarillo o blanco", "Tiene plumas"],
+         "fruta": ["Se suele vender", "Es dulce", "Lo puedes encontrar en el supermercado", "Viene de los arboles"],
+         "piano":["Es de gran tamaño", "Normalmente es de madera", "Tiene cuerdas", "Es un instrumento"],
+         "flor":["Esta viva", "La puedes encontrar en el suelo", "Es de colores", "Esta en las plantas"]
+         }
+    lista_pistas = dic[palabra_escogida]
+    longitud_palabra = len(palabra_escogida)
+    
     return (lista_pistas, longitud_palabra)
 
 def asigna_casillas (palabra_escogida, letras_correctas):
@@ -34,7 +20,7 @@ def asigna_casillas (palabra_escogida, letras_correctas):
         letras_correctas.append("_")
     return letras_correctas
 
-def prints_inicio (palabra_escogida, longitud_palabra, letras_correctas, lista_pistas, vidas):
+def prints_inicio (longitud_palabra, letras_correctas, lista_pistas, vidas):
     print ("- - - - - - - - - - - - - - - - - - - - -")
     print ("Tu Palabra Tiene:", longitud_palabra, "letras", letras_correctas)
     print ("Tu Pista 1 Es: ", lista_pistas[0])
@@ -101,7 +87,7 @@ lista_correctas = asigna_casillas (palabra_escogida, letras_correctas)
 lista_pistas, longitud_palabra = asignar_palabra(palabra_escogida)
 
 #Primeros prints
-prints_inicio (palabra_escogida, longitud_palabra, letras_correctas, lista_pistas, vidas)
+prints_inicio (longitud_palabra, letras_correctas, lista_pistas, vidas)
 #Esta parte se usa para que el usuario meta una letra, guarda la letra y comprueba si la letra ya esta en uso
 
 palabra_escogida_destruible = palabra_escogida
@@ -189,7 +175,7 @@ while (adivinado == False):
                                 lista_correctas = asigna_casillas (palabra_escogida, letras_correctas)
                                 lista_pistas, longitud_palabra = asignar_palabra(palabra_escogida)
                                 
-                                prints_inicio (palabra_escogida, longitud_palabra, letras_correctas, lista_pistas, vidas)
+                                prints_inicio (longitud_palabra, letras_correctas, lista_pistas, vidas)
                                 
                                 palabra_escogida_destruible = palabra_escogida
                                 
