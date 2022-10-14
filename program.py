@@ -20,7 +20,6 @@ def palabra_lazar(lista_palabras):
     elige una palabra a lazar de la lista
     devuelve: una palabra a lazar
     """
-    
     return(random.choice(lista_palabras))
 
 def asignar_palabra(palabra_escogida):
@@ -29,7 +28,6 @@ def asignar_palabra(palabra_escogida):
     usa la palabra escogida para encontrar las pistas correspondientes
     devuelve: una lista de pistas
     """
-    
     dic = {"perro" : ["Es algo que vive", "Es peludo",
                      "Es una mascota", "Es el mejor amigo del hombre"],
          "pato" : ["Esta vivo", "Puede nadar y caminar",
@@ -43,7 +41,6 @@ def asignar_palabra(palabra_escogida):
          }
     lista_pistas = dic[palabra_escogida]
     longitud_palabra = len(palabra_escogida)
-    
     return(lista_pistas, longitud_palabra)
 
 def asigna_casillas(palabra_escogida, letras_correctas):
@@ -160,7 +157,6 @@ letras_erroneas = []
 letras_correctas = []
 lista_palabras = ["perro", "pato", "piano", "fruta", "flor"]
 
-
 palabra_escogida = palabra_lazar(lista_palabras)
 lista_correctas = asigna_casillas(palabra_escogida, letras_correctas)
 lista_pistas, longitud_palabra = asignar_palabra(palabra_escogida)
@@ -210,26 +206,26 @@ while (adivinado == False):
                         valido = False               
                 
                 if (palabra_escogida_destruible == ""):
-                    
-                    if (perdio == True):
-                        print("Perdiste, Fin Del Juego")
-                    else:
-                        print("Adivinaste la Palabra!!!")
-                        
                     lista_palabras.remove(palabra_escogida)
                     comp_jugar = False
                     
+                    if (perdio == True):
+                        print("Perdiste, mas suerte a la proxima!!!")
+                    else:
+                        print("Adivinaste la Palabra!!!\nFelicidades, Ganaste!!!")
+                        
                     if (lista_palabras == []):
                         print("Acabaste Todas Las Palabras")
                         comp_jugar = True
                         valido = True
                         adivinado = True
                     else:
-    
                         print("Quieres Jugar Otra Vez?")
                         print("Escribe: si o no")
+                        
                         while (comp_jugar == False):
                             jugar = input("")
+                           
                             if (jugar == "si" or jugar == "Si"):
                                 print ("A Jugar")
                                 
@@ -237,16 +233,13 @@ while (adivinado == False):
                                 vidas = 4
                                 letras_usadas = []
                                 letras_erroneas = []
-                                letras_correctas = []
-                                
+                                letras_correctas = [] 
                                 palabra_escogida = palabra_lazar(lista_palabras)
                                 lista_correctas = asigna_casillas(palabra_escogida, letras_correctas)
                                 lista_pistas, longitud_palabra = asignar_palabra(palabra_escogida)
-                                
                                 prints_inicio(longitud_palabra, letras_correctas, lista_pistas, vidas)
                                 
                                 palabra_escogida_destruible = palabra_escogida
-                                
                                 perdio = False
                                 comp_jugar = True
                                 valido = False
@@ -259,13 +252,10 @@ while (adivinado == False):
                             
                             else:
                                 print("Ingresa un valor Valido")
-                    
-                    
-                    
+            
             else:
                 print("letra usada")
-               
-                
+                   
         else:
             valido = False
             print("Valor No Valido, Ingresa Una Letra A La Vez")
