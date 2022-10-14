@@ -12,47 +12,53 @@ palabra diferente, o en otro caso, cerrar el codigo
 import random
 
 """
-============================funciones de preguntas===========================================
+============================funciones de preguntas=============================
 """
-def palabra_lazar (lista_palabras):
+def palabra_lazar(lista_palabras):
     """
     (uso de funciones, listas)
     elige una palabra a lazar de la lista
     devuelve: una palabra a lazar
     """
     
-    return (random.choice(lista_palabras))
+    return(random.choice(lista_palabras))
 
-def asignar_palabra (palabra_escogida):
+def asignar_palabra(palabra_escogida):
     """
     (uso de funciones, diccionarios)
-    usa la palabra escogida como llave para encontrar sus pistas correspondientes
+    usa la palabra escogida para encontrar las pistas correspondientes
     devuelve: una lista de pistas
     """
     
-    dic = {"perro": ["Es algo que vive", "Es peludo", "Es una mascota", "Es el mejor amigo del hombre"],
-         "pato": ["Esta vivo", "Puede nadar y caminar", "Suele de ser color amarillo o blanco", "Tiene plumas"],
-         "fruta": ["Se suele vender", "Es dulce", "Lo puedes encontrar en el supermercado", "Viene de los arboles"],
-         "piano":["Es de gran tamaño", "Normalmente es de madera", "Tiene cuerdas", "Es un instrumento"],
-         "flor":["Esta viva", "La puedes encontrar en el suelo", "Es de colores", "Esta en las plantas"]
+    dic = {"perro" : ["Es algo que vive", "Es peludo",
+                     "Es una mascota", "Es el mejor amigo del hombre"],
+         "pato" : ["Esta vivo", "Puede nadar y caminar",
+                  "Suele de ser color amarillo o blanco", "Tiene plumas"],
+         "fruta" : ["Se suele vender", "Es dulce",
+                   "Lo puedes encontrar en el supermercado", "Viene de los arboles"],
+         "piano" :["Es de gran tamaño", "Normalmente es de madera",
+                  "Tiene cuerdas", "Es un instrumento"],
+         "flor" : ["Esta viva", "La puedes encontrar en el suelo",
+                 "Es de colores", "Esta en las plantas"]
          }
     lista_pistas = dic[palabra_escogida]
     longitud_palabra = len(palabra_escogida)
     
-    return (lista_pistas, longitud_palabra)
+    return(lista_pistas, longitud_palabra)
 
-def asigna_casillas (palabra_escogida, letras_correctas):
+def asigna_casillas(palabra_escogida, letras_correctas):
     """
     (uso de funciones, ciclos, listas)
-    usa la longitud de la palabra para crear una lista que representa el numero
-    de letras que existen en la palabra
-    devuelve: una lista de guiones bajos correspondiente a cada letra de la palabra
+    usa la longitud de la palabra para crear una lista que
+    representa el numero de letras que existen en la palabra
+    devuelve: una lista de guiones bajos correspondiente a las letras
+    de la palabra a adivinar
     """
     for let in palabra_escogida:
         letras_correctas.append("_")
     return letras_correctas
 
-def prints_inicio (longitud_palabra, letras_correctas, lista_pistas, vidas):
+def prints_inicio(longitud_palabra, letras_correctas, lista_pistas, vidas):
     """
     (uso de funciones)
     recibe: la longitud de la palabra, la lista de guiones bajos correspondientes
@@ -63,7 +69,7 @@ def prints_inicio (longitud_palabra, letras_correctas, lista_pistas, vidas):
     print ("- - - - - - - - - - - - - - - - - - - - -")
     print ("Tu Palabra Tiene:", longitud_palabra, "letras", letras_correctas)
     print ("Tu Pista 1 Es: ", lista_pistas[0])
-    print ("Tienes: ",vidas, "Vidas")
+    print ("Tienes: ", vidas, "Vidas")
 
 def validacion(letra_usuario):
     """
@@ -88,7 +94,7 @@ def lertra_usada_comprobacion(letra_usuario, letras_usadas):
     else:
         return False
 
-def letra_si_esta (palabra_escogida, letra_usuario):
+def letra_si_esta(palabra_escogida, letra_usuario):
     """
     (uso de condicionales, funciones, listas)
     usa la letra del usuario para comprobar si esta dentro de la palabra a adivinar
@@ -99,7 +105,7 @@ def letra_si_esta (palabra_escogida, letra_usuario):
     else:
         return False
     
-def poner_letra_correcta (palabra_escogida, letras_correctas, letra_usuario):
+def poner_letra_correcta(palabra_escogida, letras_correctas, letra_usuario):
     """
     (uso de ciclos, listas, listas, condicionales, funciones)
     crea una lista hecha con las letras de las palabras escogidas, luego crea un ciclo
@@ -121,8 +127,8 @@ def poner_letra_correcta (palabra_escogida, letras_correctas, letra_usuario):
 def poner_letra_incorrecta (letras_erroneas, letra_usuario):
     """
     (uso de funciones, listas)
-    usa la letra que no adivino el jugador y la integra a una lista para que el jugador
-    sepa que letras a usado
+    usa la letra que no adivino el jugador y la integra a una
+    lista para que el jugador sepa que letras a usado
     devuelve: una lista de letras incorrectas
     """
     letras_erroneas.append(letra_usuario)
@@ -139,7 +145,7 @@ def eliminar_letra  (palabra_escogida_destruible, letra_usuario):
     return palabra_escogida_destruible
 
 """
-======================parte principal del programa============================================
+======================parte principal del programa=======================================
 """
 valido = False
 letra_valida = True
@@ -152,17 +158,16 @@ vidas = 4
 letras_usadas = []
 letras_erroneas = []
 letras_correctas = []
-lista_palabras = ["perro", "pato","piano", "fruta", "flor"]
+lista_palabras = ["perro", "pato", "piano", "fruta", "flor"]
 
 
-palabra_escogida = palabra_lazar (lista_palabras)
-lista_correctas = asigna_casillas (palabra_escogida, letras_correctas)
+palabra_escogida = palabra_lazar(lista_palabras)
+lista_correctas = asigna_casillas(palabra_escogida, letras_correctas)
 lista_pistas, longitud_palabra = asignar_palabra(palabra_escogida)
-prints_inicio (longitud_palabra, letras_correctas, lista_pistas, vidas)
+prints_inicio(longitud_palabra, letras_correctas, lista_pistas, vidas)
 palabra_escogida_destruible = palabra_escogida
 
 while (adivinado == False):
-    
     
     while (valido == False):
         letra_usuario = input("Ingresa una letra profavor: ")
@@ -176,22 +181,22 @@ while (adivinado == False):
                 
                 if (letra_si_esta (palabra_escogida_destruible, letra_usuario)):
                     
-                    letras_correctas = poner_letra_correcta (palabra_escogida, letras_correctas, letra_usuario)
-                    print ("Tus letras Correctas Son: ",letras_correctas)
-                    print ("Tus letras erroneas son: ", letras_erroneas)
-                    print ("la letra ", letra_usuario," estaba en la palabra")
-                    palabra_escogida_destruible = eliminar_letra (palabra_escogida_destruible, letra_usuario)
+                    letras_correctas = poner_letra_correcta(palabra_escogida, letras_correctas, letra_usuario)
+                    print("Tus letras Correctas Son: ", letras_correctas)
+                    print("Tus letras erroneas son: ", letras_erroneas)
+                    print("la letra ", letra_usuario, " estaba en la palabra")
+                    palabra_escogida_destruible = eliminar_letra(palabra_escogida_destruible, letra_usuario)
                     print("- - - - - - - - - - - - - - - - - - - - -")  
                     valido = False
                     
                 else:
-                    letras_erroneas = poner_letra_incorrecta (letras_erroneas, letra_usuario)
-                    print (letra_usuario," no estaba en la palabra, ", end = "")
-                    print ("Tus letras Correctas Son: ",letras_correctas)
-                    print ("Tus letras erroneas son: ", letras_erroneas)
-                    print ("Pierdes una Vida")
+                    letras_erroneas = poner_letra_incorrecta(letras_erroneas, letra_usuario)
+                    print(letra_usuario," no estaba en la palabra, ", end = "")
+                    print("Tus letras Correctas Son: ", letras_correctas)
+                    print("Tus letras erroneas son: ", letras_erroneas)
+                    print("Pierdes una Vida")
                     vidas = vidas - 1
-                    print ("Te quedan: ", vidas, "Vidas")
+                    print("Te quedan: ", vidas, "Vidas")
             
                     if (vidas == 0):
                         print("- - - - - - - - - - - - - - - - - - - - -") 
@@ -200,29 +205,29 @@ while (adivinado == False):
                         palabra_escogida_destruible = ""
                         perdio = True
                     else:
-                        print ("Pista", 5-vidas, ":" ,lista_pistas[(4-vidas)])
+                        print("Pista", 5-vidas, ":", lista_pistas[(4-vidas)])
                         print("- - - - - - - - - - - - - - - - - - - - -")  
                         valido = False               
                 
                 if (palabra_escogida_destruible == ""):
                     
                     if (perdio == True):
-                        print ("Perdiste, Fin Del Juego")
+                        print("Perdiste, Fin Del Juego")
                     else:
-                        print ("Adivinaste la Palabra!!!")
+                        print("Adivinaste la Palabra!!!")
                         
                     lista_palabras.remove(palabra_escogida)
                     comp_jugar = False
                     
                     if (lista_palabras == []):
-                        print ("Acabaste Todas Las Palabras")
+                        print("Acabaste Todas Las Palabras")
                         comp_jugar = True
                         valido = True
                         adivinado = True
                     else:
     
-                        print ("Quieres Jugar Otra Vez?")
-                        print ("Escribe: si o no")
+                        print("Quieres Jugar Otra Vez?")
+                        print("Escribe: si o no")
                         while (comp_jugar == False):
                             jugar = input("")
                             if (jugar == "si" or jugar == "Si"):
@@ -234,11 +239,11 @@ while (adivinado == False):
                                 letras_erroneas = []
                                 letras_correctas = []
                                 
-                                palabra_escogida = palabra_lazar (lista_palabras)
-                                lista_correctas = asigna_casillas (palabra_escogida, letras_correctas)
+                                palabra_escogida = palabra_lazar(lista_palabras)
+                                lista_correctas = asigna_casillas(palabra_escogida, letras_correctas)
                                 lista_pistas, longitud_palabra = asignar_palabra(palabra_escogida)
                                 
-                                prints_inicio (longitud_palabra, letras_correctas, lista_pistas, vidas)
+                                prints_inicio(longitud_palabra, letras_correctas, lista_pistas, vidas)
                                 
                                 palabra_escogida_destruible = palabra_escogida
                                 
@@ -247,18 +252,18 @@ while (adivinado == False):
                                 valido = False
                             
                             elif (jugar == "no" or jugar == "No"):
-                                print ("Hasta la Proxima")
+                                print("Hasta la Proxima")
                                 comp_jugar = True
                                 valido = True
                                 adivinado = True
                             
                             else:
-                                print ("Ingresa un valor Valido")
+                                print("Ingresa un valor Valido")
                     
                     
                     
             else:
-                print ("letra usada")
+                print("letra usada")
                
                 
         else:
