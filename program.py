@@ -1,9 +1,35 @@
+"""
+Proyecto Demo python
+Simulador del juego ahorcado
+El programa elige una palabra en la lista de manera aleatoria, el usuario tiene
+que ir ingresando letra por letra para al final adivinar la palabra o perder
+si no adivina en 4 ocasiones.
+Al final del juego el jugador tiene la opcion de volver a jugar con otra
+palabra diferente, o en otro caso, cerrar el codigo
+"""
+
+#Bibliotecas
 import random
 
+"""
+============================funciones de preguntas===========================================
+"""
 def palabra_lazar (lista_palabras):
+    """
+    (uso de funciones, listas)
+    elige una palabra a lazar de la lista
+    devuelve: una palabra a lazar
+    """
+    
     return (random.choice(lista_palabras))
 
 def asignar_palabra (palabra_escogida):
+    """
+    (uso de funciones, diccionarios)
+    usa la palabra escogida como llave para encontrar sus pistas correspondientes
+    devuelve: una lista de pistas
+    """
+    
     dic = {"perro": ["Es algo que vive", "Es peludo", "Es una mascota", "Es el mejor amigo del hombre"],
          "pato": ["Esta vivo", "Puede nadar y caminar", "Suele de ser color amarillo o blanco", "Tiene plumas"],
          "fruta": ["Se suele vender", "Es dulce", "Lo puedes encontrar en el supermercado", "Viene de los arboles"],
@@ -16,25 +42,46 @@ def asignar_palabra (palabra_escogida):
     return (lista_pistas, longitud_palabra)
 
 def asigna_casillas (palabra_escogida, letras_correctas):
+    """
+    (uso de funciones, ciclos, listas)
+    usa la longitud de la palabra para crear una lista que representa el numero
+    de letras que existen en la palabra
+    devuelve: una lista de guiones bajos correspondiente a cada letra de la palabra
+    """
     for let in palabra_escogida:
         letras_correctas.append("_")
     return letras_correctas
 
 def prints_inicio (longitud_palabra, letras_correctas, lista_pistas, vidas):
+    """
+    (uso de funciones)
+    recibe: la longitud de la palabra, la lista de guiones bajos correspondientes
+    a la longitud de la palabra, la lista de pistas, el numero de vidas
+    Manda a imprimir los datos utiles para el jugador
+    devuelve: una serie de prints
+    """
     print ("- - - - - - - - - - - - - - - - - - - - -")
     print ("Tu Palabra Tiene:", longitud_palabra, "letras", letras_correctas)
     print ("Tu Pista 1 Es: ", lista_pistas[0])
     print ("Tienes: ",vidas, "Vidas")
 
-#La funcion comprueba si el usuario ingreso más de una palabra por error
 def validacion(letra_usuario):
+    """
+    (uso de condicionales, funciones)
+    comprueba si el jugador ingreso 1 o mas letras
+    devuelve: un verdadero si es 1 letra o falso si son mas de 1
+    """
     if (len(letra_usuario) == 1):
         return True
     else:
         return False
-    
-#La funcion comprueba si la letra ya se usó
+
 def lertra_usada_comprobacion(letra_usuario, letras_usadas):
+    """
+    (uso de condicionales, funciones, listas)
+    usa la letra del usuario para comprobar si esta dentro de la lista de letras usadas
+    devuelve: verdadero si no esta en la lista, falso si esta en la lista 
+    """
     if (letra_usuario not in letras_usadas):
         letras_usadas.append(letra_usuario)
         return True
@@ -42,10 +89,25 @@ def lertra_usada_comprobacion(letra_usuario, letras_usadas):
         return False
 
 def letra_si_esta (palabra_escogida, letra_usuario):
+    """
+    (uso de condicionales, funciones, listas)
+    usa la letra del usuario para comprobar si esta dentro de la palabra a adivinar
+    devuelve: un true si esta dentro de la palabra a adivinar, un false si no lo esta
+    """
     if (letra_usuario in palabra_escogida):
         return True
+    else:
+        return False
     
 def poner_letra_correcta (palabra_escogida, letras_correctas, letra_usuario):
+    """
+    (uso de ciclos, listas, listas, condicionales, funciones)
+    crea una lista hecha con las letras de las palabras escogidas, luego crea un ciclo
+    para comprobar si la letra del usuario esta dentro de esta lista guardando su posicion
+    en i, cuando encuentre la posicion entonces se le asignara la letra con la posicion
+    a la lista de letras correctas
+    devuelve: una lista con la posicion de las letras correctas
+    """
     palabra_escogida_lista = []
     for let in palabra_escogida:
         palabra_escogida_lista.append(let)
@@ -57,17 +119,28 @@ def poner_letra_correcta (palabra_escogida, letras_correctas, letra_usuario):
     return letras_correctas
 
 def poner_letra_incorrecta (letras_erroneas, letra_usuario):
+    """
+    (uso de funciones, listas)
+    usa la letra que no adivino el jugador y la integra a una lista para que el jugador
+    sepa que letras a usado
+    devuelve: una lista de letras incorrectas
+    """
     letras_erroneas.append(letra_usuario)
     return letras_erroneas
 
 def eliminar_letra  (palabra_escogida_destruible, letra_usuario):
+    """
+    (uso de funciones, ciclos)
+    usa un ciclo que recorre cada letra de la palabra destruible y la elimina
+    devuelve: una palabra vacia
+    """
     for x in range (len(palabra_escogida_destruible)):
         palabra_escogida_destruible = palabra_escogida_destruible.replace(letra_usuario, "")
     return palabra_escogida_destruible
 
-
-#lista de los valores usados: numero_letras, palabra_adivinar, pista_n (n = al no. de la pregunta)
-#Escoge una palabra a lazar y comprueba cual era la palabra
+"""
+======================parte principal del programa============================================
+"""
 valido = False
 letra_valida = True
 adivinado = False
@@ -85,15 +158,10 @@ lista_palabras = ["perro", "pato","piano", "fruta", "flor"]
 palabra_escogida = palabra_lazar (lista_palabras)
 lista_correctas = asigna_casillas (palabra_escogida, letras_correctas)
 lista_pistas, longitud_palabra = asignar_palabra(palabra_escogida)
-
-#Primeros prints
 prints_inicio (longitud_palabra, letras_correctas, lista_pistas, vidas)
-#Esta parte se usa para que el usuario meta una letra, guarda la letra y comprueba si la letra ya esta en uso
-
 palabra_escogida_destruible = palabra_escogida
 
 while (adivinado == False):
-    
     
     
     while (valido == False):
@@ -104,10 +172,7 @@ while (adivinado == False):
         if letra_valida:
             letra_no_usada = lertra_usada_comprobacion(letra_usuario, letras_usadas)
             
-            
-            
-            if letra_no_usada:       
-                
+            if letra_no_usada:               
                 
                 if (letra_si_esta (palabra_escogida_destruible, letra_usuario)):
                     
@@ -137,9 +202,7 @@ while (adivinado == False):
                     else:
                         print ("Pista", 5-vidas, ":" ,lista_pistas[(4-vidas)])
                         print("- - - - - - - - - - - - - - - - - - - - -")  
-                        valido = False
-                
-                
+                        valido = False               
                 
                 if (palabra_escogida_destruible == ""):
                     
@@ -201,9 +264,3 @@ while (adivinado == False):
         else:
             valido = False
             print("Valor No Valido, Ingresa Una Letra A La Vez")
-
-"""
-Los Valores que se necesitan para debugear como: lista de palabras, la palabra
-que se esta adivinando u otras palabras importantes para probar; fueron eliminadas
-desde esta version para empezar a disenar la interfaz para el usuario.
-"""
