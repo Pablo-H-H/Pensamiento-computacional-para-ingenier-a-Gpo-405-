@@ -19,7 +19,7 @@ En el caso de que tengas 3 errores entonces te saldra un mensaje diciendote la p
 
 
 
-###Instrucciones
+### Instrucciones
 Descargar el arvhivo y correr en terminal con:
 
     python program.py
