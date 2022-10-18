@@ -17,6 +17,7 @@ import random
 def palabra_lazar(lista_palabras):
     """
     (uso de funciones, listas)
+    recibe: una lista con palabras
     elige una palabra a lazar de la lista
     devuelve: una palabra a lazar
     """
@@ -25,6 +26,7 @@ def palabra_lazar(lista_palabras):
 def asignar_palabra(palabra_escogida):
     """
     (uso de funciones, diccionarios)
+    recibe: la palabra escogida
     usa la palabra escogida para encontrar las pistas correspondientes
     devuelve: una lista de pistas
     """
@@ -46,6 +48,7 @@ def asignar_palabra(palabra_escogida):
 def asigna_casillas(palabra_escogida, letras_correctas):
     """
     (uso de funciones, ciclos, listas)
+    recibe: la palabra escogida y la lista vacia de letras correctas
     usa la longitud de la palabra para crear una lista que
     representa el numero de letras que existen en la palabra
     devuelve: una lista de guiones bajos correspondiente a las letras
@@ -71,6 +74,7 @@ def prints_inicio(longitud_palabra, letras_correctas, lista_pistas, vidas):
 def validacion(letra_usuario):
     """
     (uso de condicionales, funciones)
+    recibe: la letra que ingreso el usuario
     comprueba si el jugador ingreso 1 o mas letras
     devuelve: un verdadero si es 1 letra o falso si son mas de 1
     """
@@ -82,6 +86,7 @@ def validacion(letra_usuario):
 def lertra_usada_comprobacion(letra_usuario, letras_usadas):
     """
     (uso de condicionales, funciones, listas)
+    recibe: la letra que ingreso el usuario y una lista con las letras que se usaron
     usa la letra del usuario para comprobar si esta dentro de la lista de letras usadas
     devuelve: verdadero si no esta en la lista, falso si esta en la lista 
     """
@@ -94,6 +99,7 @@ def lertra_usada_comprobacion(letra_usuario, letras_usadas):
 def letra_si_esta(palabra_escogida, letra_usuario):
     """
     (uso de condicionales, funciones, listas)
+    recibe: la palabra escogida y la letra que ingreso el usuario
     usa la letra del usuario para comprobar si esta dentro de la palabra a adivinar
     devuelve: un true si esta dentro de la palabra a adivinar, un false si no lo esta
     """
@@ -105,6 +111,8 @@ def letra_si_esta(palabra_escogida, letra_usuario):
 def poner_letra_correcta(palabra_escogida, letras_correctas, letra_usuario):
     """
     (uso de ciclos, listas, listas, condicionales, funciones)
+    recibe: la palabra escogida, una lista con las letras correctoas, y
+    la letra que ingreso el usuaario
     crea una lista hecha con las letras de las palabras escogidas, luego crea un ciclo
     para comprobar si la letra del usuario esta dentro de esta lista guardando su posicion
     en i, cuando encuentre la posicion entonces se le asignara la letra con la posicion
@@ -124,6 +132,7 @@ def poner_letra_correcta(palabra_escogida, letras_correctas, letra_usuario):
 def poner_letra_incorrecta (letras_erroneas, letra_usuario):
     """
     (uso de funciones, listas)
+    recibe: una lista con la letras erroneas y la letra que ingreso el usuario
     usa la letra que no adivino el jugador y la integra a una
     lista para que el jugador sepa que letras a usado
     devuelve: una lista de letras incorrectas
@@ -134,6 +143,7 @@ def poner_letra_incorrecta (letras_erroneas, letra_usuario):
 def eliminar_letra  (palabra_escogida_destruible, letra_usuario):
     """
     (uso de funciones, ciclos)
+    recibe: la palabra escogida para destruirla y la letra que ingreso el usuario
     usa un ciclo que recorre cada letra de la palabra destruible y la elimina
     devuelve: una palabra vacia
     """
