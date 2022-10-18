@@ -17,6 +17,18 @@ En el caso de que tengas bien todas las letras del ahorcado entonces te saldra u
 Felicidades Ganaste!!!!")
 En el caso de que tengas 3 errores entonces te saldra un mensaje diciendote la palabra correcta(ejemplo: "La Palabra era PATO, Mas suerte a la proxima")
 
+
+
+###Instrucciones
+Descargar el arvhivo y correr en terminal con:
+
+    python program.py
+o abrir en Thonny y dar boton de play.
+
+Responder a las preguntas que aparecen, el programa tiene instrucciones y no usa bibliotecas no standard.
+
+
+
 # Biblioteca Random
 
 La biblioteca random se utiiza para generar valores a lazar dentro de un rango, en este caso su uso es asignar una palabra a lazar al usuario para despues adivinarla, de 
