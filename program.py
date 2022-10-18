@@ -8,7 +8,7 @@ Al final del juego el jugador tiene la opcion de volver a jugar con otra
 palabra diferente, o en otro caso, cerrar el codigo
 """
 
-#Bibliotecas
+#Biblioteca random se usa para elegir palabras a lazar
 import random
 
 """
@@ -142,7 +142,7 @@ def eliminar_letra  (palabra_escogida_destruible, letra_usuario):
     return palabra_escogida_destruible
 
 """
-======================parte principal del programa=======================================
+====================== Parte principal del programa =======================================
 """
 valido = False
 letra_valida = True
