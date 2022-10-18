@@ -16,3 +16,11 @@ Finales del juego
 En el caso de que tengas bien todas las letras del ahorcado entonces te saldra un mensaje felicitandote por haber acertado corretamente(ejemplo: "La Palabra era PATO,
 Felicidades Ganaste!!!!")
 En el caso de que tengas 3 errores entonces te saldra un mensaje diciendote la palabra correcta(ejemplo: "La Palabra era PATO, Mas suerte a la proxima")
+
+# Biblioteca Random
+
+La biblioteca random se utiiza para generar valores a lazar dentro de un rango, en este caso su uso es asignar una palabra a lazar al usuario para despues adivinarla, de 
+esta manera se consigue que cada partida del juego sea diferente.
+
+La pagina principal de donde se saco esta informacion es:
+https://docs.python.org/3/library/random.html
